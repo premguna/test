@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
 
@@ -30,8 +30,8 @@ jobs:
           
             #Now we have got the access of EC2 and we will start the deploy .
             cd /home/ec2-user/test
-            git checkout master &&
+            git checkout main &&
             git fetch --all &&
-            git pull origin master &&
+            git pull origin main &&
             cp * /home/ec2-user/testing/. 
             
