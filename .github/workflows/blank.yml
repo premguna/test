@@ -24,27 +24,18 @@ jobs:
             HOSTNAME : ${{ secrets.HOSTNAME  }}
             USER_NAME : ${{ secrets.USER_NAME  }}
             
-        run: |
-            
-             sudo apt-get install openssh-client -y 
-             eval $(ssh-agent -s)
-             echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
-             sudo mkdir -p ~/.ssh
-             sudo chmod 700 ~/.ssh
-             cd ~/.ssh
-             sudo touch test
-             sudo chmod 644 test
-             sudo echo "$PRIVATE_KEY" > ~/.ssh/test
-             sudo echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-             sudo chmod 700 ~/.ssh/test
-
+  run: |
              sudo mkdir tester
              cd tester
              git checkout main 
              git fetch --all 
-             git pull origin main 
+             git pull origin main
+             echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+             scp -r tester/* -i private_key StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
             
-             sudo echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-             scp -r tester/* -i private_key ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
+            
+        
+             
+           
             
             
