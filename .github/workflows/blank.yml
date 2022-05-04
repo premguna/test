@@ -32,17 +32,16 @@ jobs:
              mkdir -p ~/.ssh
              chmod 700 ~/.ssh
              echo "$SSH_KEY_PRODUCTION" > ~/.ssh/test
-            [[ -f /.dockerenv ]] 
-            echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+             echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
              chmod 700 ~/.ssh/test
 
-            mkdir tester
-            cd tester
-            git checkout main 
-            git fetch --all 
-            git pull origin main 
+             mkdir tester
+             cd tester
+             git checkout main 
+             git fetch --all 
+             git pull origin main 
             
-            echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-            scp -r test/* -i private_key ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
+             echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+             scp -r tester/* -i private_key ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
             
             
