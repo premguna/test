@@ -31,6 +31,7 @@ jobs:
              echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
              sudo mkdir -p ~/.ssh
              sudo chmod 700 ~/.ssh
+             sudo touch test 
              sudo echo "$PRIVATE_KEY" > ~/.ssh/test
              sudo echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
              sudo chmod 700 ~/.ssh/test
