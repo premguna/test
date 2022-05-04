@@ -31,8 +31,8 @@ jobs:
              echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
              sudo mkdir -p ~/.ssh
              sudo chmod 700 ~/.ssh
-             echo "$PRIVATE_KEY" > ~/.ssh/test
-             echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+             sudo echo "$PRIVATE_KEY" > ~/.ssh/test
+             sudo echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
              sudo chmod 700 ~/.ssh/test
 
              sudo mkdir tester
@@ -41,7 +41,7 @@ jobs:
              git fetch --all 
              git pull origin main 
             
-             echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+             sudo echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
              scp -r tester/* -i private_key ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
             
             
