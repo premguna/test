@@ -26,16 +26,16 @@ jobs:
             
         run: |
             
-             apt-get install openssh-client -y 
+             sudo apt-get install openssh-client -y 
              eval $(ssh-agent -s)
              echo "$SSH_KEY_PRODUCTION" | tr -d '\r' | ssh-add -
-             mkdir -p ~/.ssh
-             chmod 700 ~/.ssh
+             sudo mkdir -p ~/.ssh
+             sudo chmod 700 ~/.ssh
              echo "$SSH_KEY_PRODUCTION" > ~/.ssh/test
              echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-             chmod 700 ~/.ssh/test
+             sudo chmod 700 ~/.ssh/test
 
-             mkdir tester
+             sudo mkdir tester
              cd tester
              git checkout main 
              git fetch --all 
