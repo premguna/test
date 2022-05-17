@@ -25,12 +25,11 @@ jobs:
             USER_NAME : ${{ secrets.USER_NAME  }}
             
         run: 
-               
-             sudo mkdir test
-             cd test
-             git pull origin main
-             echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-             scp -r * -i private_key StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
+              
+              
+              git pull origin main
+              echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+              scp -r * -i private_key StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
             
             
         
