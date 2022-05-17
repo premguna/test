@@ -1,32 +1,17 @@
-name: CI/CD 
+name: CI
 
-on:
-  push:
-    branches: [ main ]
+on: [push]
 
 jobs:
-
   build:
+
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
-
-  Deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      
-      env:
-            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-            HOSTNAME : ${{ secrets.HOSTNAME  }}
-            USER_NAME : ${{ secrets.USER_NAME  }}
-            source: "*"
-            port: 22
-            target: "/home/ec2-user/testing/guna"
-            
-      run: 
-              
-              echo "$PRIVATE_KEY" > private_key 
-              sudo chmod 600 private_key
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
