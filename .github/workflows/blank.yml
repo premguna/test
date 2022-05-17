@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v2
+     - name: Deploy source-code
+       uses: appleboy/scp-action@master
       
     env:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
