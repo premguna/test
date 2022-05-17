@@ -27,8 +27,9 @@ jobs:
         run: 
               
               
-              echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-              scp -r * -i private_key StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
+              echo "$PRIVATE_KEY" > private_key 
+              sudo chmod 600 private_key
+              sudo scp -i private_key -r * StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
             
             
         
