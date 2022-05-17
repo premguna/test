@@ -19,7 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2 
       - name: Deploy in EC2
-        env:
+      -  uses: appleboy/scp-action@master  
+         env:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
             HOSTNAME : ${{ secrets.HOSTNAME  }}
             USER_NAME : ${{ secrets.USER_NAME  }}
