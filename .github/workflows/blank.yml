@@ -23,13 +23,16 @@ jobs:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
             HOSTNAME : ${{ secrets.HOSTNAME  }}
             USER_NAME : ${{ secrets.USER_NAME  }}
+            source: "*"
+            port: 22
+            target: "/home/ec2-user/testing/guna"
             
         run: 
               
               git pull origin main
               echo "$PRIVATE_KEY" > private_key 
               sudo chmod 600 private_key
-              sudo scp -i private_key -r * StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/.
+              
             
             
         
