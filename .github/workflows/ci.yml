@@ -16,9 +16,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+     - uses: actions/checkout@v2
       
-      env:
+       env:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
             HOSTNAME : ${{ secrets.HOSTNAME  }}
             USER_NAME : ${{ secrets.USER_NAME  }}
@@ -26,7 +26,7 @@ jobs:
             port: 22
             target: "/home/ec2-user/testing/guna"
             
-      run: 
+       run: 
               
               echo "$PRIVATE_KEY" > private_key 
               sudo chmod 600 private_key
