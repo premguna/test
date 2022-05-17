@@ -17,10 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v2
-    run: |
-       echo "$PRIVATE_KEY" > private_key
-       sudo chmod 600 private_key
-       sudo scp -i private_key -r * StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
+     - name: Generate deployment package
+       run: |
+         echo "$PRIVATE_KEY" > private_key
+         sudo chmod 600 private_key
+         sudo scp -i private_key -r * StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
        
       
     env:
