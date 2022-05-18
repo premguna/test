@@ -23,6 +23,7 @@ jobs:
           echo "$PRIVATE_KEY" > ~/.ssh/private_key
           echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
           chmod 700 ~/.ssh/private_key
+          ls -lrt
           sudo mkdir guna
           cd guna
           git pull origin main
