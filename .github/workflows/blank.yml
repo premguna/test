@@ -17,7 +17,6 @@ jobs:
           echo "$PRIVATE_KEY" > private_key 
           chmod 400 private_key
           ssh -i private_key -o StrictHostKeyChecking=no  ${USER_NAME}@${HOSTNAME}    
-         
-        run: | 
-           command: sudo touch /home/ec2-user/guna.txt  
-           service: cli    
+        script: |
+               whoami
+               ls -lrt 
