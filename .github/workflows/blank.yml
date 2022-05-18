@@ -8,8 +8,8 @@ jobs:
     steps:
      - uses: actions/checkout@v1
      - run: |
-          sudo mkdir test
-          sudo cd test
+          sudo mkdir test1
+          sudo cd test1
           git clone git@github.com:premguna/test.git
           cd test
           git pull origin main
