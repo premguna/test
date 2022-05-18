@@ -1,20 +1,19 @@
-name: CI
+name: My Workflow
 
 on: [push]
 
 jobs:
-  build:
-
+  runMultipleCommands:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-    - run: |
-           echo Hello, world!
-           mkdir test
-           cd test
-           touch files.txt
+     - uses: actions/checkout@v1
+     - run: |
+        echo "A initial message"
+        pip install -r requirements.txt
+        echo "Another message or command"
+        python myscript.py
+        bash some-shell-script-file.sh -xe
+     - run: echo "One last message"
            
            
            
