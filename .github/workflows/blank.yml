@@ -14,7 +14,7 @@ jobs:
           USER_NAME : ${{ secrets.USER_NAME  }}
           port: 22
           
-          
+     - name: deploy     
      - run: |
           echo "$PRIVATE_KEY" > private_key
           sudo chmod 600 private_key
