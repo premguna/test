@@ -16,8 +16,8 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key 
           chmod 400 private_key
-     #  ssh -i private_key -o StrictHostKeyChecking=no  ${USER_NAME}@${HOSTNAME}    
+          ssh -i private_key -o StrictHostKeyChecking=no  ${USER_NAME}@${HOSTNAME}    
           sudo mkdir guna
           cd guna
-          sudo scp -i private_key -r * StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
+          scp -i private_key -r * StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
 
