@@ -15,7 +15,7 @@ jobs:
             
         run: |
           command -v ssh-agent >/dev/null
-          sudo apt-get update -y 
+      #    sudo apt-get update -y 
           sudo apt-get install openssh-client -y  
           eval $(ssh-agent -s)
           echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
@@ -27,6 +27,6 @@ jobs:
           sudo mkdir guna
           cd guna
           git pull origin main
-          cd ..
-          scp -i ~/.ssh/private_key -r guna/* -o StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
+          cd guna
+          scp -i ~/.ssh/private_key -r *  ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
 
