@@ -8,17 +8,14 @@ jobs:
     steps:
      - uses: actions/checkout@v1
      - run: |
-        echo "A initial message"
-        command -v ssh-agent >/dev/null 
-        apt-get update -y && apt-get install openssh-client -y
-        eval $(ssh-agent -s)
-        echo "$AWS_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-        mkdir -p ~/.ssh
-        chmod 700 ~/.ssh
-        apt-get install yarn -qy
-        yarn global add @gridsome/cli
-        cd gridsome
-        yarn install
+          sudo mkdir test
+          sudo cd test
+          git clone git@github.com:premguna/test.git
+          cd test
+          git pull origin main
+          
+      
+       
     
     
      - run: echo "One last message"
