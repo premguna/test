@@ -1,0 +1,29 @@
+name: My Workflow
+
+on: [push]
+
+jobs:
+  runMultipleCommands:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Deploy in EC2
+        env:
+            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+            HOSTNAME : ${{ secrets.HOSTNAME  }}
+            USER_NAME : ${{ secrets.USER_NAME  }}
+            
+        run: |
+          command -v ssh-agent >/dev/null
+          sudo apt-get install openssh-client -y  
+          eval $(ssh-agent -s)
+          echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$PRIVATE_KEY" > ~/.ssh/private_key
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
+          chmod 700 ~/.ssh/private_key
+          ls -lrt
+          git pull origin main
+          scp -i ~/.ssh/private_key -r *  ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
+
