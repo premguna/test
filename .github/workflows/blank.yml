@@ -18,5 +18,6 @@ jobs:
           chmod 400 private_key
           ssh -i private_key -o StrictHostKeyChecking=no  ${USER_NAME}@${HOSTNAME}    
           sudo mkdir guna
-          whoami
-          ls -lrt 
+          cd guna
+          git pull origin main
+
