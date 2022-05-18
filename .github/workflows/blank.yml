@@ -22,7 +22,7 @@ jobs:
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           echo "$PRIVATE_KEY" > ~/.ssh/private_key 
-          chmod 400 ~/.ssh/private_key
+          chmod 700 ~/.ssh/private_key
           sudo mkdir guna
           cd guna
           git pull origin main
