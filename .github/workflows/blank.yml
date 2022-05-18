@@ -19,6 +19,5 @@ jobs:
      #  ssh -i private_key -o StrictHostKeyChecking=no  ${USER_NAME}@${HOSTNAME}    
           sudo mkdir guna
           cd guna
-          #  git pull origin main
           sudo scp -i private_key -r * StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
 
