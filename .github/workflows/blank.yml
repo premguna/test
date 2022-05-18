@@ -15,7 +15,7 @@ jobs:
           port: 22
           
      - name: deploy     
-     - run: |
+     - run: 
           echo "$PRIVATE_KEY" > private_key
           sudo chmod 600 private_key
           sudo ssh -i private_key StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}
