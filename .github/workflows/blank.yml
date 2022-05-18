@@ -7,18 +7,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v1
+     - name: login to ec2
+       env:
+          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+          HOSTNAME : ${{ secrets.HOSTNAME  }}
+          USER_NAME : ${{ secrets.USER_NAME  }}
+          port: 22
+          
+          
      - run: |
-          sudo mkdir test1
-          cd test1
-          git clone git@github.com:premguna/test.git
-          cd test
-          git pull origin main
+          echo "$PRIVATE_KEY" > private_key
+          sudo chmod 600 private_key
+          sudo ssh -i private_key StrictHostKeyChecking=no ${USER_NAME}@${HOSTNAME}
+          touch /home/ec2-user/hghgh
           
       
        
     
     
-     - run: echo "One last message"
+    
            
            
            
