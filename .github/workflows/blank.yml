@@ -24,9 +24,6 @@ jobs:
           echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
           chmod 700 ~/.ssh/private_key
           ls -lrt
-          sudo mkdir guna
-          cd guna
           git pull origin main
-          cd guna
           scp -i ~/.ssh/private_key -r *  ${USER_NAME}@${HOSTNAME}:/home/ec2-user/testing/guna
 
