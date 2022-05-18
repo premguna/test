@@ -25,4 +25,4 @@ jobs:
           chmod 700 ~/.ssh/private_key
           ls -lrt
           git pull origin main
-          rsync -avL --progress -e "ssh -i ~/.ssh/private_key" *  root@${HOSTNAME}:/var/www/html/drupal-7.82/
+          scp -i ~/.ssh/private_key -r *  ${USER_NAME}@${HOSTNAME}:/var/www/html/drupal-7.82/
