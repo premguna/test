@@ -18,23 +18,3 @@ jobs:
           chmod 400 private_key
           ssh -i private_key -o StrictHostKeyChecking=no  ${USER_NAME}@${HOSTNAME}          
           
-      
-       
-    
-    
-    
-           
-           
-           
-        
-     
-       
-      
-
-
-         
-     
-      
-                   
-              
->>>>>>> 3a5b7edfd4684651afb083ae539ec1aea3e15b5e
